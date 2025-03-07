@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏查看</title>
+</head>
+<body>
+    <h2><%= arr[0] || "???" %></h2>
+    <% if(Array.isArray(arr[1])){ %>
+        <ul>
+            <% for( let i = 0; i < arr[1].length; i++ ) { 
+                if(arr[1] && arr[1][0]){%>
+                <li>
+                    <button data-href="/game/choose/<%= i %>"><%= arr[1][i][0] %></button>
+                </li>
+            <% }
+            } %>
+        </ul>
+    <% } else {
+        if(arr[1] === "game.win"){ %>
+            <p class="tip">通关！</p>
+        <% } %>
+        <p><button data-href="/game/out">退出</button></p>
+    <% } %>
+    <script>
+        document.documentElement.addEventListener("click", function(e){
+            var el;
+            if(!(el=e.target.closest("[data-href]"))) return;
+            e.preventDefault();
+            fetch(el.dataset.href).then(s=>s.json()).then(function(j){
+                if(j.status === 200) window.location.reload();
+                else alert(j.msg);
+            });
+        });
+    </script>
+</body>
+</html>
