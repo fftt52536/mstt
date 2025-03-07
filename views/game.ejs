@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>游戏查看</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <h2><%= arr[0] || "???" %></h2>
-    <% if(Array.isArray(arr[1])){ %>
-        <ul>
-            <% for( let i = 0; i < arr[1].length; i++ ) { 
-                if(arr[1] && arr[1][0]){%>
-                <li>
-                    <button data-href="/game/choose/<%= i %>"><%= arr[1][i][0] %></button>
-                </li>
-            <% }
-            } %>
-        </ul>
-    <% } else {
-        if(arr[1] === "game.win"){ %>
-            <p class="tip">通关！</p>
+    <div class="main">
+        <h2><%= arr[0] || "???" %></h2>
+        <% if(Array.isArray(arr[1])){ %>
+            <ul>
+                <% for( let i = 0; i < arr[1].length; i++ ) { 
+                    if(arr[1] && arr[1][0]){%>
+                    <li>
+                        <button data-href="/game/choose/<%= i %>"><%= arr[1][i][0] %></button>
+                    </li>
+                <% }
+                } %>
+            </ul>
+        <% } else {
+            if(arr[1] === "game.win"){ %>
+                <p class="tip">通关！</p>
+            <% } %>
+            <ul><li><button data-href="/game/out">退出</button></li></ul>
         <% } %>
-        <p><button data-href="/game/out">退出</button></p>
-    <% } %>
+    </div>
     <script>
         document.documentElement.addEventListener("click", function(e){
             var el;
