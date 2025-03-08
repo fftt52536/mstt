@@ -51,7 +51,7 @@ li button::before{
 }
 
 li button:hover{
-  background-color: #0000000b;
+  background-color: #0000000c;
 }
 
 li button:active{
@@ -80,4 +80,32 @@ li button:focus{
   font-size: 30px;
   font-weight: normal;
   margin-bottom: 12px;
+}
+
+.tip{
+  background-color: #ff3333;
+  color: #ffffff;
+  padding: 5px;
+  width: 70%;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.tip::before{
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url(/images/info.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  filter: opacity(0.8);
+}
+
+.tip-gold{
+  background-color: #ff9933;
 }
