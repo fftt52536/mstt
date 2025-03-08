@@ -30,8 +30,8 @@ li button{
   padding: 0;
   border: none;
   outline: none;
-  background-color: #00000011;
-  color: #999999;
+  background-color: #00000008;
+  color: #aaaaaa;
   cursor: pointer;
   width: 200px;
   text-align: left;
@@ -49,13 +49,25 @@ li button::before{
   margin-left: 5px;
   margin-right: 5px;
 }
+
+li button:hover{
+  background-color: #0000000b;
+}
+
+li button:active{
+  background-color: #00000010;
+}
+
+li button:focus{
+  outline: 1px solid #cccccc;
+}
 .main{
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 500px;
   background-color: #ffffff;
   text-align: center;
   padding-top: 30px;
@@ -63,4 +75,9 @@ li button::before{
 }
 .main>*{
   margin: 0 auto;
+}
+.main h2{
+  font-size: 30px;
+  font-weight: normal;
+  margin-bottom: 12px;
 }
