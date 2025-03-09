@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
+    <%- include('sidebar') %>
     <div class="main">
         <h2><%= arr[0] || "???" %></h2>
         <% if(Array.isArray(arr[1])){ %>
@@ -27,6 +28,19 @@
         <% } %>
     </div>
     <script>
+        if(window.localStorage.gid){
+            window.localStorage.gid = (parseInt(window.localStorage.gid)||0) + 1;
+        }else{
+            window.localStorage.gid = 1;
+        }
+        window.addEventListener("storage", function(ev){
+            window.close();
+            setTimeout(function(){
+                document.querySelector("title").innerHTML = "/(ㄒoㄒ)/~~ 游戏已退出";
+                document.querySelector(".main").innerHTML = "<h2>游戏已退出</h2><p class='tip'>请转到最新的游戏界面。</p>";
+            }, 100);
+            
+        });
         document.documentElement.addEventListener("click", function(e){
             var el;
             if(!(el=e.target.closest("[data-href]"))) return;

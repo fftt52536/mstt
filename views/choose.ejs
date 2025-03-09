@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>/(ㄒoㄒ)/~~ 游戏已退出</title>
+    <title>确定要覆盖？</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+    <style>
+        .main a{
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #fb9308;
+            display: inline-block;
+            padding: 6px;
+            margin: 5px;
 
+        }
+    </style>
+</head>
 <body>
     <%- include('sidebar') %>
     <div class="main">
-        <h2>游戏已退出</h2>
-        <p class='tip'>请重新打开游戏。</p>
+        <h2>您有尚未结束的游戏，确认覆盖？</h2>
+        <a href="#" data-href="/game/out">确认覆盖</a>
+        <a href="/game/">取消覆盖</a>
     </div>
     <script>
         if(window.localStorage.gid){
@@ -28,7 +38,15 @@
             }, 100);
             
         });
+        document.documentElement.addEventListener("click", function(e){
+            var el;
+            if(!(el=e.target.closest("[data-href]"))) return;
+            e.preventDefault();
+            fetch(el.dataset.href).then(s=>s.json()).then(function(j){
+                if(j.status === 200) window.location.reload();
+                else alert(j.msg);
+            });
+        });
     </script>
 </body>
-
 </html>

@@ -73,11 +73,15 @@ router.get("/", async function(req, res, next){
     }
 });
 router.get("/play/:id", async function(req, res, next){
-    if(await getGame(req.params.id)){
-        req.session.cur = req.params.id;
-        res.redirect("/game/");
+    if(req.session.cur){
+        res.render("choose", {oid: req.session.cur, nid: req.params.id});
     }else{
-        res.send("游戏不存在");
+        if(await getGame(req.params.id)){
+            req.session.cur = req.params.id;
+            res.redirect("/game/");
+        }else{
+            res.send("游戏不存在");
+        }
     }
 });
 router.get("/out", function(req, res, next){
