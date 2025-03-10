@@ -35,7 +35,6 @@ ul>li{
 li button{
   margin: 0;
   padding: 0;
-  border: none;
   outline: none;
   background-color: #00000008;
   color: #aaaaaa;
@@ -43,6 +42,7 @@ li button{
   width: 200px;
   text-align: left;
   line-height: 30px;
+  border: 1px solid #000000aa;
 }
 
 li button::before{
@@ -81,10 +81,16 @@ li button:focus{
   box-shadow: 1px 1px 15px #000000;
 }
 .main>*{
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
-.main h2{
-  font-size: 30px;
+h2{
+  font-size: 175%;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+h3{
+  font-size: 125%;
   font-weight: normal;
   margin-bottom: 12px;
 }
@@ -125,4 +131,9 @@ li button:focus{
   height: 100%;
   background-color: #ffffff;
   box-shadow: 1px 0 15px #000000aa;
+}
+
+.toshow{
+  opacity: 0;
+  transition: opacity 1.5s linear;
 }
